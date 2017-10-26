@@ -13,7 +13,7 @@ Each node contains key,name,marks
 
 Key is the last two digits of Roll Number(Type casting of last two digits is done)
 
-Dynamic Input.
+Dynamic Input
 
 Input Roll No in the format CED16I0 _ _		
 */
