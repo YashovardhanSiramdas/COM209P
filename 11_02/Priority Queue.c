@@ -5,7 +5,7 @@ Roll No:- CED16I028
 COM209P
 Lab session 13 (02/11/17)
 
-Heap Sort(Min Heap)
+Priority Queue(Max Heap)
 
 heapInsert(key):- Inserts key as per essential Binary Tree properties and performs perculation from Inserted key to root if required(Bottom-Up)
 delMin():- Deletes root from Heap and performs perculation from root to last level if required(Top-Down)
@@ -28,41 +28,41 @@ void swap(int *a,int *b)
 	*a=temp;
 }
 
-int min(int a,int b)
+int max(int a,int b)
 {
 	if(a>b)
-		return b;
-	else
 		return a;
+	else
+		return b;
 }
 
-void heapInsert(int key)
+void QueueInsert(int key)
 {
 	H.hsize++;
 	H.a[H.hsize]=key;
 	int i=H.hsize;
-	while(i>1 && H.a[i]<H.a[i/2])
+	while(i>1 && H.a[i]>H.a[i/2])
 	{
 		swap(&H.a[i],&H.a[i/2]);
 		i=i/2;
 	}
-	printf("%d is successfully inserted in Heap\n",key);
+	printf("%d is successfully inserted in Queue\n",key);
 }
 
-void displayHeap()
+void displayQueue()
 {
 	int i;
-	printf("Elements in the heap:-\n");
+	printf("Priorities in the Queue:-\n");
 	for(i=1;i<=H.hsize;i++)
 		printf("%d ",H.a[i]);
 	printf("\n");
 }
 
-void delMin()
+void delMax()
 {
 	if(H.hsize==0)
 	{
-		printf("Heap is empty,delMin can't be performed\n");
+		printf("Queue is empty,delMax can't be performed\n");
 		return ;
 	}
 
@@ -72,9 +72,9 @@ void delMin()
 	int i=1;
 	while((2*i)<=H.hsize)
 	{
-		if((2*i)+1<=H.hsize && H.a[i]>min(H.a[2*i],H.a[(2*i)+1]))
+		if((2*i)+1<=H.hsize && H.a[i]<max(H.a[2*i],H.a[(2*i)+1]))
 		{
-			if(H.a[(2*i)+1]<H.a[2*i])
+			if(H.a[(2*i)+1]>H.a[2*i])
 			{
 				swap(&H.a[i],&H.a[(2*i)+1]);
 				i=(2*i)+1;
@@ -86,7 +86,7 @@ void delMin()
 			}
 
 		}
-		else if((2*i)+1>H.hsize && H.a[i]>H.a[2*i])
+		else if((2*i)+1>H.hsize && H.a[i]<H.a[2*i])
 		{
 			swap(&H.a[i],&H.a[(2*i)]);
 			break;
@@ -94,7 +94,7 @@ void delMin()
 		else
 			break;
 	}
-	printf("%d ",x);
+	printf("%d is dequeued\n",x);
 
 }
 
@@ -104,32 +104,28 @@ int main()
 	H.hsize=0;
 	while(1)
 	{
-		printf("1.Insert\n2.Display Heap\n3.Heap Sort\n4.Exit\n");
+		printf("1.Insert Priority\n2.Delete Max Priority\n3.Display Queue\n4.Exit\n");
 		scanf("%d",&t);
 		switch(t)
 		{
 			case 1 :
 			{
 				int key;
-				printf("Enter integer to be inserted\n");
+				printf("Enter Priority to be inserted\n");
 				scanf("%d",&key);
-				heapInsert(key);
+				QueueInsert(key);
 			}
 			break;
 
 			case 2 :
 			{
-				displayHeap();	
+				delMax();	
 			}
 			break;
 
 			case 3 :
 			{
-				int hsize=H.hsize;
-				printf("Heap Sort:-\n");
-				while(hsize--)
-					delMin();
-				printf("\n");	
+				displayQueue();	
 			}
 			break;
 
