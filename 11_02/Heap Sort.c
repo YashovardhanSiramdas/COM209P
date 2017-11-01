@@ -58,7 +58,7 @@ void displayHeap()
 	printf("\n");
 }
 
-void delMin()
+void delMax()
 {
 	if(H.hsize==0)
 	{
@@ -128,7 +128,7 @@ int main()
 				int hsize=H.hsize;
 				printf("Heap Sort:-\n");
 				while(hsize--)
-					delMin();
+					delMax();
 				printf("\n");	
 			}
 			break;
