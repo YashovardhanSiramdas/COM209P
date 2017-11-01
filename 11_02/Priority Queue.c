@@ -7,8 +7,8 @@ Lab session 13 (02/11/17)
 
 Priority Queue(Max Heap)
 
-heapInsert(key):- Inserts key as per essential Binary Tree properties and performs perculation from Inserted key to root if required(Bottom-Up)
-delMin():- Deletes root from Heap and performs perculation from root to last level if required(Top-Down)
+QueueInsert(key):- Inserts key as per essential Binary Tree properties and performs perculation from Inserted key to root if required(Bottom-Up)
+delMin():- Deletes root(Max Priority) from Heap and performs perculation from root to last level if required(Top-Down)
 
 */
 #include <stdio.h>
