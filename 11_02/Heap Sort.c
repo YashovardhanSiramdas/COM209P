@@ -5,10 +5,10 @@ Roll No:- CED16I028
 COM209P
 Lab session 13 (02/11/17)
 
-Heap Sort(Min Heap)
+Heap Sort(Max Heap)(Descending Order)
 
 heapInsert(key):- Inserts key as per essential Binary Tree properties and performs perculation from Inserted key to root if required(Bottom-Up)
-delMin():- Deletes root from Heap and performs perculation from root to last level if required(Top-Down)
+delMax():- Deletes root(Max element) from Heap and performs perculation from root to last level if required(Top-Down)
 
 */
 #include <stdio.h>
@@ -28,12 +28,12 @@ void swap(int *a,int *b)
 	*a=temp;
 }
 
-int min(int a,int b)
+int max(int a,int b)
 {
 	if(a>b)
-		return b;
-	else
 		return a;
+	else
+		return b;
 }
 
 void heapInsert(int key)
@@ -41,7 +41,7 @@ void heapInsert(int key)
 	H.hsize++;
 	H.a[H.hsize]=key;
 	int i=H.hsize;
-	while(i>1 && H.a[i]<H.a[i/2])
+	while(i>1 && H.a[i]>H.a[i/2])
 	{
 		swap(&H.a[i],&H.a[i/2]);
 		i=i/2;
@@ -72,9 +72,9 @@ void delMin()
 	int i=1;
 	while((2*i)<=H.hsize)
 	{
-		if((2*i)+1<=H.hsize && H.a[i]>min(H.a[2*i],H.a[(2*i)+1]))
+		if((2*i)+1<=H.hsize && H.a[i]<max(H.a[2*i],H.a[(2*i)+1]))
 		{
-			if(H.a[(2*i)+1]<H.a[2*i])
+			if(H.a[(2*i)+1]>H.a[2*i])
 			{
 				swap(&H.a[i],&H.a[(2*i)+1]);
 				i=(2*i)+1;
@@ -86,7 +86,7 @@ void delMin()
 			}
 
 		}
-		else if((2*i)+1>H.hsize && H.a[i]>H.a[2*i])
+		else if((2*i)+1>H.hsize && H.a[i]<H.a[2*i])
 		{
 			swap(&H.a[i],&H.a[(2*i)]);
 			break;
