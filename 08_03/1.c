@@ -4,6 +4,8 @@ Roll No:- CED16I028
 COM209P
 Lab session 2(03/08/17)
 Celebrity problem using two nested for loops.Input is a 2d array
+(x,y)=1 implies x knows y
+(x,y)=0 implies x doesnt know y
 */
 #include <stdio.h>
 
@@ -33,11 +35,13 @@ int main()
 		c[i]=1;
 	celebrity(n,a,c);
 	for(i=0;i<n;i++)
+	{
 		if(c[i]==1)
 		{
 			printf("Person %d is celebrity\n",i+1);
 			return 0;
 		}
+	}
 	printf("No Celebrity exists\n");
 	
 
