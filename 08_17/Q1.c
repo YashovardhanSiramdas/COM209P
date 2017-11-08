@@ -24,7 +24,7 @@ struct queue enqueue(struct queue q,int n)
 	else
 	{
 		if(q.front==-1)
-		q.front=0;
+			q.front=0;
 		q.rear=q.rear+1;
 		q.a[q.rear]=n;
 		printf("%d is enqueued\n",q.a[q.rear]);

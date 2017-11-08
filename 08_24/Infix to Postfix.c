@@ -9,6 +9,13 @@ Input Format:- Infix expression.A character array consisting of a-z and operator
 
 precedence function sets preference to the operations +,-,*,/
 
+40 (
+41 )
+42 *
+43 +
+45 -
+47 /
+
 */
 #include <stdio.h>
 
